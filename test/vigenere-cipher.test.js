@@ -68,6 +68,7 @@ describe('Vigenere cipher', () => {
             assert.equal(directMachine.decrypt('TRVVFB VT JSUIFMYL!', 'learning'), 'INVEST IN YOURSELF!');
             assert.equal(directMachine.decrypt('HSVD AJAL ^^', 'behappy'), 'GOOD LUCK ^^');
         });
+
     });
 
     describe('functional requirements', () => {

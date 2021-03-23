@@ -1,11 +1,13 @@
 const CustomError = require("../extensions/custom-error");
 
 class VigenereCipheringMachine {
+  constructor(mode) {
+    this.mode = mode ;
+  }
 
   encrypt(target, key) {
-    const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-      'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-      'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    if (target == null || key == null) throw Error()
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
     let encryptArray = []
     let fullKeyArray = []
 
@@ -43,14 +45,13 @@ class VigenereCipheringMachine {
       }
     }
 
-    return encryptArray.join('')
+    return this.mode === false ? encryptArray.reverse().join('') : encryptArray.join('')
   }
 
 
   decrypt(target, key) {
-    const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-      'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-      'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    if (target == null || key == null) throw Error()
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
     let decryptArray = []
     let fullKeyArray = []
 
@@ -84,7 +85,7 @@ class VigenereCipheringMachine {
       }
     }
 
-    return decryptArray.join('')
+    return this.mode === false ? decryptArray.reverse().join('') : decryptArray.join('')
   }
 }
 
